@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/safwankamal/Desktop/CS2314/cs2413-lab/lab00/src/main'
+relocations:     []
+...
