@@ -4,7 +4,7 @@ CFLAGS = -std=c11 -Wall -Wextra -O2 -I./src
 BIN_DIR = bin
 TARGET  = $(BIN_DIR)/two_sum_run
 
-SRC  = src/two_sum.c
+SRC  = src/two_sum_d.c
 MAIN = tests/test_two_sum.c
 
 .PHONY: all test run run_nobench clean
