@@ -17,6 +17,25 @@
 int majorityElement(int* nums, int numsSize) {
      // TODO: implement
 
+     // most probably would not need this failsafe.
+     if(numsSize == 0) return -1;
 
 
+     // Would be interesting to do this with hash tables or random selection. 
+     // This solution is posibble because 
+     int guess = nums[0];
+     int count = 1;
+
+     for(int i = 0; i < numsSize; i++){
+          if(guess == nums[i]){
+               count++; 
+          }else{
+               count--;
+               if(count < 0){
+                    guess = nums[i];
+                    count = 0;
+               }
+          }
+     }
+     return guess;
 }
