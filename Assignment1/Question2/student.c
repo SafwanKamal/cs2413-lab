@@ -22,7 +22,7 @@ int majorityElement(int* nums, int numsSize) {
 
 
      // Would be interesting to do this with hash tables or random selection. 
-     // This solution is posibble because 
+     // This solution is posibble because we are guaranteed a majority element
      int guess = nums[0];
      int count = 1;
 
