@@ -24,14 +24,51 @@
 //   make run1
 // ------------------------------------------------------------
 
-#include "Student.h"
+#include "student.h"
 #include <stdbool.h>
 #include <stddef.h>  // size_t
 #include <string.h>  // strlen
+#include <stdio.h>
 
 bool isValid(const char *s) {
     // TODO: Implement using a stack.
     //
+
+    char stack[100000]; 
+    int s_len = strlen(s);
+    // printf("s_len: %d\n", s_len);
+    int stack_pointer = 0;
+
+
+    for(int i = 0; i < s_len; i++){
+        if(s[i] == '(' || s[i] == '{' || s[i] == '['){
+            stack[stack_pointer] = s[i];
+            stack_pointer++;
+        }else if(s[i] == ')' || s[i] == '}' || s[i] == ']'){
+            if(stack_pointer == 0){
+                return false;
+            }
+            if(stack[stack_pointer - 1] != '(' && s[i] == ')'){
+                return false;
+            }
+            if(stack[stack_pointer - 1] != '{' && s[i] == '}'){
+                return false;
+            }
+            if(stack[stack_pointer - 1] != '[' && s[i] == ']'){
+                return false;
+            }
+            stack_pointer--;
+        }else{
+            // Ignore
+        }
+
+    }
+
+    if(stack_pointer == 0){
+        return true;
+    }else{
+        return false;
+    }
     // Recommended approach:
     // - Use a char array as a stack to store opening brackets.
     // - Scan the string from left to right:
