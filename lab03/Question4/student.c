@@ -10,9 +10,36 @@
 // - Do not allocate new nodes.
 // ------------------------------------------------------------
 
-#include "Student.h"
+#include "student.h"
 
 int middleNodeValue(struct ListNode *head) {
     // TODO: implement
+    if(head == NULL){
+        // By definition
+        return -1;
+    }
 
+    if(head->next == NULL){
+        return head->val;
+    }
+
+    if(head->next->next == NULL){
+        return head->next->val;
+    }
+
+    struct ListNode *fast, *slow;
+
+    slow = head->next;
+    fast = head->next->next;
+
+    while(fast != NULL){
+        if(fast->next == NULL){
+            return slow->val;
+        }else{
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+    }
+
+    return slow->val;
 }

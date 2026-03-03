@@ -26,5 +26,19 @@ struct ListNode* reverseList(struct ListNode* head) {
     // Hints (optional):
     // - Keep track of previous and current pointers.
     // - Iterate until current becomes NULL.
+    if(head == NULL){
+        return NULL;
+    }
 
+    struct ListNode *prev = head;
+    struct ListNode *current = head->next;
+    head->next = NULL;
+
+    while(current != NULL){
+        struct ListNode *temp = current->next;
+        current->next = prev;
+        prev = current;
+        current = temp;
+    }
+    return prev;
 }
