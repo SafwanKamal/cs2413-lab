@@ -55,7 +55,29 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
+int sum = 0;
+
+void sumNumberModified(struct TreeNode* root, int current){
+    if(root->left == NULL && root->right == NULL){
+        sum += current * 10 + root->val;
+    }else{
+        if(root->left != NULL){
+            sumNumberModified(root->left, 10 * current + root->val);
+        }
+        if(root->right != NULL){
+            sumNumberModified(root->right, 10 * current + root->val);
+        }
+    }
+}
 
 int sumNumbers(struct TreeNode* root) {
       // TODO: implement
+      sum = 0;
+      if(root == NULL){
+        return 0;
+      }else{
+        sumNumberModified(root, 0);
+      }
+
+      return sum;
 }
